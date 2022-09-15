@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String rotation </title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .displayBox{
+            display: flex;
+        }
+        .btn{
+            font-size: 3rem;
+            font-weight: bolder;
+            border: 2px solid black; 
+            padding: 2rem; ;
+        }
+       
+        .display{
+            display: flex;
+           width: 70%;
+           min-height: 400px;
+           font-size: 5rem;
+           background-color: red;
+           color: white; 
+           overflow: hidden;
+        }
+        .letter{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            padding: 2em;
+            margin: 0px 5px;
+            background-color: rgb(177, 250, 7);
+            border: 2px solid black;
+            transition: all 5s;
+        }
+        .moveright{
+            transform: translateX(100px);
+        }
+        .moveleft{
+            transform: translateX(-100px);
+        }
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="input">
+            <input type="text"placeholder="enter a string">
+            <button>Submit</button>                                                                                   
+        </div>
+    <div class="displayBox">
+        <div class="btn left"><</div>
+        <div class="display"></div>
+        <div class="btn right">></div>
+        </div>
+    </div>
+ <script>
+    let submitbtn=document.querySelector("button")
+    let inputBox=document.querySelector("input")
+    let displayBox=document.querySelector(".display")
+    let rotaterightBtn=document.querySelector(".right")
+    let rotateleftBtn=document.querySelector(".left")
+    let userString=""
+    rotaterightBtn.onclick=rotate
+    rotateleftBtn.onclick=rotate
+    submitbtn.onclick=function(){
+        userString=inputBox.value
+        displayBox.innerHTML=`<h1>${userString}</h1>`
+        displayBox.innerHTML=update(userString)
+
+    }
+    function update(s){
+        let letters=Array.from(S)
+        for(let letters of letters){
+            resHTML+='<div class="letter">${letter}</div>'
+        }
+        return resHTML
+    }
+    function rotate(e){
+        let btn=e.target
+        if(btn.innerText.trim()==">"){
+            userString=rotaterightOnce(userString)
+            addclass("moveright")
+        }
+        else{
+            userString=rotateleftOnce(userString)
+            addclass("moveleft")
+        }
+        displayBox.innerHTML=`<h1>${userString}</h1>`
+    }
+    function addClass(classname){
+        let letterBoxes=document.querySelectorAll
+        for(let letterBox  of letterBoxes){
+            letterBox.classList.add(className)
+        }
+
+    }
+    function rotaterightOnce(s){
+        return s.slice(-1)+s.slice(0,-1)
+    }
+    function rotateleftOnce(s){
+        return s.slice(1)+s[0]    
+    }
+ </script>      
+</body>
+</html>
